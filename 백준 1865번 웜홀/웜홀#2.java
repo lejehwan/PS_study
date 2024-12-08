@@ -53,18 +53,19 @@ public class Main {
     }
 
     private static boolean findNegativeCycle() {
-        int[] dist = new int[N + 1];
+        long[] dist = new long[N + 1];
         Arrays.fill(dist, INF);
         dist[1] = 0;
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i <= N; i++) {
             for (Node node : graph) {
                 if (dist[node.toV] > dist[node.fromV] + node.weight) {
                     dist[node.toV] = dist[node.fromV] + node.weight;
+                    // 최적화
+//                    if (i == N) return true;
                 }
             }
         }
-
         for (Node node : graph) {
             if (dist[node.toV] > dist[node.fromV] + node.weight) {
                 return true;
