@@ -29,9 +29,7 @@ public class Main {
                         if (dp[i][j][k] == INF) continue;
 
                         int curtCost = dp[i][j][k];
-                        // 오른발
                         if (move != j) dp[i + 1][j][move] = Math.min(dp[i + 1][j][move], curtCost + cost(k, move));
-                        // 왼발
                         if (move != k) dp[i + 1][move][k] = Math.min(dp[i + 1][move][k], curtCost + cost(j, move));
                     }
                 }
